@@ -3,14 +3,14 @@ import { motion } from "motion/react";
 import { assets, infoList, toolsData } from "../assets/assets";
 
 const About = ({isDarkMode}) => {
-  // Simple animation variants similar to Header
+  // Much faster animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
+        staggerChildren: 0.08, // Reduced from 0.2
+        delayChildren: 0.05, // Reduced from 0.1
       },
     },
   };
@@ -18,13 +18,13 @@ const About = ({isDarkMode}) => {
   const itemVariants = {
     hidden: { 
       opacity: 0, 
-      y: 30 
+      y: 15 // Reduced from 30
     },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.35, // Reduced from 0.6
         ease: "easeOut",
       },
     },
@@ -33,13 +33,13 @@ const About = ({isDarkMode}) => {
   const imageVariants = {
     hidden: { 
       opacity: 0, 
-      scale: 0.8 
+      scale: 0.92 // Less dramatic than 0.8
     },
     visible: {
       opacity: 1,
       scale: 1,
       transition: {
-        duration: 0.8,
+        duration: 0.45, // Reduced from 0.8
         ease: "easeOut",
       },
     },
@@ -51,7 +51,7 @@ const About = ({isDarkMode}) => {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.15 }} // Reduced from 0.3
       >
         <motion.h4 
           variants={itemVariants}
@@ -75,7 +75,7 @@ const About = ({isDarkMode}) => {
             <img 
               src={assets.user_image} 
               alt="" 
-              className="w-full rounded-3xl shadow-2xl hover:shadow-3xl transition-shadow duration-500" 
+              className="w-full rounded-3xl shadow-2xl hover:shadow-3xl transition-shadow duration-300" 
             />
           </motion.div>
           
@@ -98,7 +98,7 @@ const About = ({isDarkMode}) => {
             >
               {infoList.map(({ icon, iconDark, title, description }, index) => (
                 <div
-                  className="border-[0.5px] border-gray-400 dark:border-gray-600 rounded-xl p-6 cursor-pointer hover:bg-rose-50 dark:hover:bg-gray-800 duration-500 hover:shadow-md bg-white dark:bg-gray-800/50"
+                  className="border-[0.5px] border-gray-400 dark:border-gray-600 rounded-xl p-6 cursor-pointer hover:bg-rose-50 dark:hover:bg-gray-800 duration-300 hover:shadow-md bg-white dark:bg-gray-800/50"
                   key={index}
                 >
                   <img 
@@ -125,7 +125,7 @@ const About = ({isDarkMode}) => {
             >
               {toolsData.map((tool, index) => (
                 <div
-                  className="flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-400 dark:border-gray-600 rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 duration-500 bg-white dark:bg-gray-800/50"
+                  className="flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-400 dark:border-gray-600 rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 duration-300 bg-white dark:bg-gray-800/50"
                   key={index}
                 >
                   <img src={tool} alt="" className="w-5 sm:w-7" />
