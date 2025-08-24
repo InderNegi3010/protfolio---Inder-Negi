@@ -21,9 +21,9 @@ const Services = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { 
+      transition: {
         duration: 0.35, // Much faster
-        ease: "easeOut" // Changed from spring for faster animation
+        ease: "easeOut", // Changed from spring for faster animation
       },
     },
   };
@@ -31,7 +31,7 @@ const Services = () => {
   return (
     <div
       id="services"
-      className="w-full px-[12%] py-16 scroll-mt-20
+      className="w-full px-4 sm:px-6 md:px-8 lg:px-[12%] py-12 sm:py-16 scroll-mt-20
                   bg-gradient-to-b from-white via-gray-50 to-white
                   dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
     >
@@ -44,52 +44,60 @@ const Services = () => {
         {/* Headings */}
         <motion.h4
           variants={itemVariants}
-          className="text-center mb-2 text-lg font-Ovo text-gray-500 dark:text-gray-400 tracking-wide"
+          className="text-center mb-2 text-base sm:text-lg font-Ovo text-gray-500 dark:text-gray-400 tracking-wide"
         >
           What I Offer
         </motion.h4>
 
         <motion.h2
           variants={itemVariants}
-          className="text-center text-5xl font-Ovo font-bold text-gray-800 dark:text-gray-100"
+          className="text-center text-3xl sm:text-4xl md:text-5xl font-Ovo font-bold text-gray-800 dark:text-gray-100"
         >
           My Services
         </motion.h2>
 
         <motion.p
           variants={itemVariants}
-          className="text-center max-w-2xl mt-5 mb-12 mx-auto font-Ovo text-gray-600 dark:text-gray-300 text-lg md:text-md leading-relaxed"
+          className="text-center max-w-2xl mt-4 sm:mt-5 mb-8 sm:mb-12 mx-auto font-Ovo text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed px-4"
         >
           I am a MERN Stack Developer from Dehradun, Uttarakhand with 2 years of
-          experience working on scalable, modern, and user-friendly applications.
+          experience working on scalable, modern, and user-friendly
+          applications.
         </motion.p>
 
         {/* Service Cards */}
         <motion.div
           variants={containerVariants}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 my-10"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 my-8 sm:my-10"
         >
           {serviceData.map(({ icon, title, description, link }, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className="relative border border-gray-200 dark:border-gray-700 rounded-2xl px-8 py-12
+              className="relative border border-gray-200 dark:border-gray-700 rounded-2xl px-4 sm:px-6 md:px-8 py-8 sm:py-10 md:py-12
                bg-white dark:bg-gray-800 transition-all duration-300 ease-out
                hover:-translate-y-2 hover:bg-gray-50 dark:hover:bg-gray-700
                hover:shadow-[0_8px_16px_rgba(0,0,0,0.4)] dark:hover:shadow-[0_8px_16px_rgba(255,255,255,0.1)]"
             >
-              <div className="w-14 h-14 flex items-center justify-center bg-pink-100 dark:bg-pink-900/30 rounded-xl mb-6 shadow-inner">
-                <img className="w-8" src={icon} alt={title} />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-pink-100 dark:bg-pink-900/30 rounded-xl mb-4 sm:mb-6 shadow-inner">
+                <img className="w-6 sm:w-8" src={icon} alt={title} />
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-100">
+              <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-800 dark:text-gray-100">
                 {title}
               </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300 leading-6">{description}</p>
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-5 sm:leading-6">
+                {description}
+              </p>
               <a
                 href={link}
-                className="flex items-center gap-2 text-sm mt-6 text-pink-500 dark:text-pink-400 hover:text-pink-600 dark:hover:text-pink-300 transition-colors duration-200"
+                className="flex items-center gap-2 text-xs sm:text-sm mt-4 sm:mt-6 text-pink-500 dark:text-pink-400 hover:text-pink-600 dark:hover:text-pink-300 transition-colors duration-200"
               >
-                Read more <img src={assets.right_arrow} className="w-4" alt="arrow" />
+                Read more{" "}
+                <img
+                  src={assets.right_arrow}
+                  className="w-3 sm:w-4"
+                  alt="arrow"
+                />
               </a>
             </motion.div>
           ))}
