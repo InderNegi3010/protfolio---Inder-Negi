@@ -51,7 +51,7 @@ const Footer = ({ isDarkMode }) => {
           <li>
             <a
               target="_blank"
-              href="www.linkedin.com/in/inder-singh-negi-937477354"
+              href="https://www.linkedin.com/in/inder-singh-negi-937477354/"
               className="hover:text-blue-500 transition-colors duration-200"
             >
               LinkedIn
@@ -60,7 +60,7 @@ const Footer = ({ isDarkMode }) => {
           <li>
             <a
               target="_blank"
-              href=""
+              href="https://x.com/INegi16088"
               className="hover:text-blue-500 transition-colors duration-200"
             >
               Twitter

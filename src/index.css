@@ -1,21 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Ovo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Ovo:wght@400&display=swap");
 
 @import "tailwindcss";
 
 @theme {
   --color-darkTheme: #0f172a;
+  --font-family-outfit: Outfit, ui-sans-serif, system-ui, sans-serif;
+  --font-family-ovo: Ovo, ui-serif, Georgia, serif;
 }
 
 @variant dark (.dark &);
 
-
-:root {
-  --color-darkTheme: #0f172a;
-}
-
+/* Global styles */
 * {
-  font-family: Outfit;
+  font-family: var(--font-family-outfit);
 }
 
 /* Dark mode support */
@@ -23,42 +20,260 @@
   color-scheme: dark;
 }
 
-/* Custom shadow */
-.shadow-3xl {
+/* Custom utilities for Tailwind v4 */
+@utility shadow-3xl {
   box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
 }
 
-/* Grid background pattern */
-.bg-grid-gray-100 {
+@utility bg-grid-gray-100 {
   background-image: linear-gradient(
       rgba(156, 163, 175, 0.1) 1px,
       transparent 1px
     ),
     linear-gradient(90deg, rgba(156, 163, 175, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
-.bg-grid-gray-700 {
+@utility bg-grid-gray-700 {
   background-image: linear-gradient(rgba(55, 65, 81, 0.3) 1px, transparent 1px),
     linear-gradient(90deg, rgba(55, 65, 81, 0.3) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Responsive text utility */
+@utility text-responsive {
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+}
+
+/* Mobile-specific utilities */
+@utility mobile-padding {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@utility mobile-content {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Header button utilities */
+@utility header-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+@utility header-button-link {
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+@utility header-buttons-lg {
+  flex-direction: row;
+  gap: 1rem;
+  max-width: none;
+}
+
+@utility header-button-link-lg {
+  width: auto;
+  min-width: 200px;
+  max-width: none;
+}
+
+/* Enhanced Profile image positioning */
+@utility profile-image {
+  object-fit: cover;
+  object-position: center 25%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  transform: scale(1.1);
+}
+
+/* Enhanced professional glow effect */
+@utility profile-glow-professional {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.2),
+    rgba(147, 51, 234, 0.2),
+    rgba(16, 185, 129, 0.2)
+  );
+  filter: blur(12px);
+  opacity: 0.4;
+  transition: all 0.5s ease;
+}
+
+/* Original profile glow (kept for backwards compatibility) */
+@utility profile-glow {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.3),
+    rgba(147, 51, 234, 0.3),
+    rgba(236, 72, 153, 0.3)
+  );
+  filter: blur(8px);
+  opacity: 0.3;
+  transition: opacity 0.5s ease;
+}
+
+/* Alternative cropping options */
+@utility profile-crop-tight {
+  object-position: center 15%;
+  transform: scale(1.25);
+}
+
+@utility profile-crop-medium {
+  object-position: center 30%;
+  transform: scale(1.08);
+}
+
+@utility profile-crop-loose {
+  object-position: center 35%;
+  transform: scale(1.05);
+}
+
+@utility xs-text {
+  font-size: 14px;
+}
+
+@utility xs-padding {
+  padding: 0.75rem;
+}
+
+@utility xs-gap {
+  gap: 0.5rem;
+}
+
+@utility mobile-button {
+  width: 100%;
+  max-width: none;
+  padding: 12px 16px;
+  font-size: 16px;
+}
+
+/* Regular CSS Classes (not utilities) */
+
+/* Mobile-specific profile image adjustments */
+@media (max-width: 640px) {
+  .profile-image-mobile {
+    object-position: center 20% !important;
+    transform: scale(1.15) !important;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .profile-image-mobile {
+    object-position: center 22% !important;
+    transform: scale(1.12) !important;
+  }
+}
+
+/* Desktop adjustments */
+@media (min-width: 1025px) {
+  .profile-image-mobile {
+    object-position: center 25% !important;
+    transform: scale(1.1) !important;
+  }
+}
+
+/* Professional styling for profile image */
+.profile-professional {
+  position: relative;
+}
+
+.profile-professional::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg, 
+    rgba(0, 0, 0, 0.1) 0%, 
+    transparent 50%, 
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Hover effects */
+.group:hover .profile-glow-professional {
+  opacity: 0.7;
+  filter: blur(16px);
+}
+
+.group:hover .profile-glow {
+  opacity: 0.6;
+}
+
+/* Status indicator */
+.status-indicator {
+  background: linear-gradient(135deg, #10b981, #34d399);
+  box-shadow: 
+    0 0 0 2px rgba(255, 255, 255, 0.8),
+    0 0 0 4px rgba(16, 185, 129, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0%, 100% {
+    box-shadow: 
+      0 0 0 2px rgba(255, 255, 255, 0.8),
+      0 0 0 4px rgba(16, 185, 129, 0.3),
+      0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 2px rgba(255, 255, 255, 0.8),
+      0 0 0 6px rgba(16, 185, 129, 0.2),
+      0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Professional enhancements */
+.professional-shadow {
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.professional-border {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+/* Image quality enhancements */
+.image-crisp {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+.image-smooth {
+  image-rendering: auto;
+  image-rendering: smooth;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
 /* Responsive improvements */
 @media (max-width: 640px) {
-  .min-w-200px {
-    min-width: 180px;
-  }
-
-  /* Ensure proper text sizing on mobile */
-  .text-responsive {
-    font-size: clamp(0.875rem, 2.5vw, 1rem);
-  }
-
-  /* Better mobile spacing */
-  .mobile-padding {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
   /* Prevent horizontal overflow on mobile */
   body {
     overflow-x: hidden;
@@ -73,21 +288,12 @@
     overflow-x: hidden;
   }
 
-  /* Better mobile navigation */
-  .mobile-nav {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    max-width: 320px;
-    height: 100vh;
-    z-index: 9999;
+  /* Improve mobile form elements */
+  input,
+  textarea,
+  select {
+    font-size: 16px; /* Prevents zoom on iOS */
   }
-}
-
-/* Smooth scrolling for better mobile experience */
-html {
-  scroll-behavior: smooth;
 }
 
 /* Better touch targets for mobile */
@@ -97,107 +303,23 @@ html {
     min-height: 44px;
     min-width: 44px;
   }
-
-  /* Ensure mobile menu is properly positioned */
-  .mobile-menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    max-width: 320px;
-    height: 100vh;
-    z-index: 9999;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
-  }
-
-  .mobile-menu.open {
-    transform: translateX(0);
-  }
 }
 
-/* Improve mobile form elements */
-@media (max-width: 640px) {
-  input,
-  textarea,
-  select {
-    font-size: 16px; /* Prevents zoom on iOS */
-  }
-
-  /* Better mobile button sizing */
-  .mobile-button {
-    width: 100%;
-    max-width: none;
-    padding: 12px 16px;
-    font-size: 16px;
-  }
-
-  /* Ensure mobile content fits properly */
-  .mobile-content {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    width: 100%;
-    max-width: 100vw;
-  }
+/* Dark mode specific adjustments */
+.dark .status-indicator {
+  box-shadow: 
+    0 0 0 2px rgba(31, 41, 55, 0.8),
+    0 0 0 4px rgba(16, 185, 129, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Additional mobile optimizations */
-@media (max-width: 480px) {
-  /* Extra small screens */
-  .xs-text {
-    font-size: 14px;
-  }
-
-  .xs-padding {
-    padding: 0.75rem;
-  }
-
-  .xs-gap {
-    gap: 0.5rem;
-  }
+.dark .professional-border {
+  border: 2px solid rgba(0, 0, 0, 0.2);
 }
 
-/* Header button centering fixes */
-.header-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-.header-buttons a {
-  width: 100%;
-  max-width: 280px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-/* Ensure buttons don't get pushed to the side on very small screens */
-@media (max-width: 400px) {
-  .header-buttons {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .header-buttons a {
-    max-width: 100%;
-    width: 100%;
-  }
-}
-
-@media (min-width: 640px) {
-  .header-buttons {
-    flex-direction: row;
-    gap: 1rem;
-    max-width: none;
-  }
-
-  .header-buttons a {
-    width: auto;
-    min-width: 200px;
-    max-width: none;
-  }
+.dark .professional-shadow {
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }

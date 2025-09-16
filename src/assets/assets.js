@@ -74,28 +74,39 @@ export const assets = {
   right_arrow,
   send_icon,
   right_arrow_bold,
-    right_arrow_bold_dark,
-  github_icon
+  right_arrow_bold_dark,
+  github_icon,
 };
+
+// Cache busting version for work images
+const IMAGE_VERSION = "v2";
 
 export const workData = [
   {
-    title: "Doctor Appointment Web App",
+    title: "Prescripto Web App",
     description:
       "A full-stack appointment booking platform with Admin and Doctor dashboards. Features JWT authentication, scheduling, doctor availability, and RESTful APIs. Deployed on Netlify & Vercel.",
     tools: ["React.js", "Node.js", "Express.js", "MongoDB"],
     link: "https://prescripto-vvy9.vercel.app/",
-    github: "https://github.com/InderNegi3010",
-    bgImage: "/work-1.png",
+    github: "https://github.com/InderNegi3010/Prescripto",
+    bgImage: `/work-1.png?v=${IMAGE_VERSION}`,
   },
   {
-    title: "Imagefy – Text to Image Generator",
+    title: "E-Commerce Website",
+    description:
+      "Developed a full-stack e-commerce application with features like product browsing, cart management, and secure checkout. Focused on building a responsive, user-friendly interface and seamless functionality to enhance the online shopping experience.",
+    link: "https://ecommerce-web-fhiw.vercel.app/",
+    github: "https://github.com/InderNegi3010/ECOMMERCE-WEB",
+    bgImage: `/work-4.png?v=${IMAGE_VERSION}`,
+  },
+  {
+    title: "Text to Image Generator",
     description:
       "AI-powered web app that generates images from text prompts using modern API integration. Clean and responsive UI with deployment on Vercel.",
     tools: ["React.js", "Node.js", "API Integration"],
     link: "https://imagefy-text-to-image-cm5b.vercel.app/",
-    github: "https://github.com/InderNegi3010",
-    bgImage: "/work-2.png",
+    github: "https://github.com/InderNegi3010/Imagefy-text-to-Image",
+    bgImage: `/work-2.png?v=${IMAGE_VERSION}`,
   },
   {
     title: "Background Removal Tool",
@@ -103,16 +114,8 @@ export const workData = [
       "An online tool to remove image backgrounds instantly with AI. Built with responsive design and deployed on Vercel.",
     tools: ["React.js", "Node.js", "API Integration"],
     link: "https://bg-removal-sigma-sandy.vercel.app/",
-    github: "https://github.com/InderNegi3010",
-    bgImage: "/work-3.png",
-  },
-  {
-    title: "UI/UX designing",
-    description:
-      "Crafting intuitive, user-friendly, and visually appealing digital experiences. I focus on wireframing, prototyping, and creating responsive interfaces that balance aesthetics with usability, ensuring seamless interaction across devices and platforms.",
-    link: "https://bg-removal-sigma-sandy.vercel.app/",
-    github: "https://github.com/InderNegi3010",
-    bgImage: "/work-4.png",
+    github: "https://github.com/InderNegi3010/bg-removal",
+    bgImage: `/work-3.png?v=${IMAGE_VERSION}`,
   },
 ];
 

@@ -3,17 +3,17 @@ import { assets } from "../assets/assets";
 import { motion } from "motion/react";
 
 const Header = () => {
-  const titles = [
-    "MERN Stack Developer",
-    "Frontend Developer",
-    "Backend Developer",
-    "Coder",
-  ];
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
+    const titles = [
+      "MERN Stack Developer",
+      "Frontend Developer",
+      "Backend Developer",
+      "Coder",
+    ];
     const currentTitle = titles[currentTitleIndex];
     let timeoutId;
 
@@ -43,7 +43,7 @@ const Header = () => {
     }
 
     return () => clearTimeout(timeoutId);
-  }, [displayedText, isTyping, currentTitleIndex, titles]);
+  }, [displayedText, isTyping, currentTitleIndex]);
 
   // Simple animation variants
   const containerVariants = {
@@ -101,28 +101,49 @@ const Header = () => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
-        {/* Profile Image */}
+        {/* Enhanced Profile Image with Professional Cropping */}
         <motion.div
-          className="relative group mb-2 sm:mb-4"
+          className="relative group mb-4 sm:mb-6 md:mb-8"
           variants={imageVariants}
         >
           <div
-            className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 
-                          to-pink-600 rounded-full blur opacity-25 group-hover:opacity-75 
-                          transition duration-300 group-hover:duration-200"
+            className="absolute -inset-2 sm:-inset-3 md:-inset-4 profile-glow-professional rounded-full blur-sm 
+                          transition duration-500 group-hover:duration-300"
           ></div>
-          <div className="relative">
+          <div className="relative profile-professional">
             <img
               src={assets.profile_img}
-              className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-40 lg:h-40 
-                         rounded-full object-cover border-4 border-white dark:border-gray-600 
-                         shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-3xl"
+              className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-60 lg:h-60 xl:w-68 xl:h-68
+                         rounded-full border-4 border-white dark:border-gray-700 
+                         shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-3xl
+                         ring-2 ring-blue-500/20 group-hover:ring-blue-500/40 profile-image-mobile"
               alt="Inder Negi - Developer"
+              style={{
+                objectPosition: "center 25%", // Updated positioning
+                aspectRatio: "1/1",
+                objectFit: "cover",
+                transform: "scale(1.1)", // Zoom to show upper body better
+              }}
             />
+            {/* Enhanced overlay for professional look */}
             <div
               className="absolute inset-0 rounded-full bg-gradient-to-tr 
-                            from-transparent via-transparent to-white/10 
-                            dark:to-gray-300/10 pointer-events-none"
+                            from-transparent via-transparent to-white/20 
+                            dark:to-gray-300/20 pointer-events-none"
+            ></div>
+            {/* Professional subtle inner shadow */}
+            <div
+              className="absolute inset-0 rounded-full 
+                            shadow-[inset_0_2px_4px_rgba(0,0,0,0.1)] 
+                            dark:shadow-[inset_0_2px_4px_rgba(255,255,255,0.1)]
+                            pointer-events-none"
+            ></div>
+            {/* Status indicator with enhanced styling */}
+            <div
+              className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 md:bottom-4 md:right-4 
+                              w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-green-500 rounded-full border-2 
+                              border-white dark:border-gray-800 shadow-lg
+                              ring-2 ring-green-500/30 animate-pulse"
             ></div>
           </div>
         </motion.div>
